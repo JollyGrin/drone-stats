@@ -43,7 +43,7 @@
       ],
       "links": { "review": "https://oscarliang.com/betafpv-pavo-pico-whoop-dji-o3/", "affiliate": null },
       "tags": ["whoop", "cinewhoop", "owned"],
-      "notes": "Your drone — a 2S/XT30 cinewhoop (NOT 1S). HD-only frame designed to carry the Avatar HD Pro. The Walksnail variant needs an extra VTX adapter. Buy the ELRS variant for the RadioMaster Pocket. Note: a newer Pavo Pico II (DJI O4, ~6:30 flight) also exists if you haven't bought yet."
+      "notes": "A 2S/XT30 HD cinewhoop, built to carry the Avatar HD Pro. The Walksnail variant needs an extra VTX adapter; the ELRS variant binds to the RadioMaster Pocket. A newer Pavo Pico II (DJI O4, ~6:30 flight) also exists if you haven't bought yet."
     },
     {
       "id": "walksnail-avatar-hd-pro-kit",
@@ -63,7 +63,7 @@
       ],
       "links": { "review": "https://oscarliang.com/walksnail-avatar-hd-pro-v2-kit/", "affiliate": null },
       "tags": ["digital", "walksnail", "critical-path"],
-      "notes": "The air unit that makes the Pico fly digital. ~32g, Sony Starvis II camera. BetaFPV built the Pico's HD bracket around this exact unit. Includes a screw kit but NOT a screwdriver — your tools gap stays open."
+      "notes": "The air unit that makes the Pico fly digital. ~32g, Sony Starvis II camera. BetaFPV built the Pico's HD bracket around this exact unit. Includes a screw kit but no screwdriver."
     },
     {
       "id": "walksnail-avatar-1s-kit",
@@ -81,7 +81,7 @@
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["digital", "walksnail", "lightweight"],
-      "notes": "Real name is 'Mini 1S Lite Kit'. ~4x lighter (7.8g) and cheaper than the Pro Kit, but a smaller 1/2.7\" sensor = lower image quality. Works on the Pico but isn't what the frame is designed around — the Pro Kit is the better pairing here."
+      "notes": "~4x lighter (7.8g) and cheaper than the Pro Kit, but a smaller 1/2.7\" sensor means lower image quality. Works on the Pico, though the frame is designed around the Pro Kit, which is the better pairing here."
     },
     {
       "id": "walksnail-moonlight",
@@ -146,7 +146,7 @@
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["whoop", "2S", "spare"],
-      "notes": "CORRECTED: the Pico's stock motor is 1102 14000KV (2S), not 18000KV. The 1102 18000KV is a 1S motor for the Meteor75/Cetus class — a different drone. Useful as Pico spares."
+      "notes": "The Pico's stock motor — 1102 14000KV (2S). (The 1102 18000KV is a different, 1S motor for the Meteor75/Cetus class.) Useful as Pico spares."
     },
     {
       "id": "betafpv-lava-2s-450mah-xt30",
@@ -160,7 +160,7 @@
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["2S", "consumable"],
-      "notes": "CORRECTED to 2S/XT30 (the Pico is 2S, not 1S). LAVA 2S 450mAh is the stock/recommended pack and fits the tight bay. A LiHV 75C variant gives a bit more punch. Buy several (~4-8) for a real session. ~$15/2-pack."
+      "notes": "The stock/recommended Pico pack (2S/XT30), sized for the tight battery bay. A LiHV 75C variant gives a bit more punch. Buy several (~4-8) for a real session. ~$15/2-pack."
     },
     {
       "id": "isdt-q6-nano-charger",
@@ -174,7 +174,7 @@
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["2S", "gap"],
-      "notes": "CORRECTED: the Pico uses 2S/XT30, so a 1S BT2.0/A30 board does NOT apply. Use a 2S-capable smart charger (ISDT Q6 Nano) with an XT30 charge lead, or add an XT30 parallel board (e.g. HGLRC Thor) to charge several packs at once. NOTE: BetaFPV's own 2S charger lacks an XT30 port — avoid it."
+      "notes": "Use a 2S-capable smart charger (ISDT Q6 Nano) with an XT30 charge lead, or add an XT30 parallel board (e.g. HGLRC Thor) to charge several packs at once. Note: BetaFPV's own 2S charger lacks an XT30 port."
     },
     {
       "id": "goggle-battery-2s",
@@ -186,7 +186,7 @@
       "retailers": [],
       "links": { "review": null, "affiliate": null },
       "tags": ["goggles", "critical-path", "gap"],
-      "notes": "HIDDEN GAP: the Goggles X has no built-in battery. You need an external 2S-6S pack (commonly a 2S 18650 strap-on pack, XT60). Without this the goggles won't power on. Confirm preferred form factor."
+      "notes": "The Goggles X has no built-in battery — you need an external 2S-6S pack (commonly a 2S 18650 strap-on pack, XT60). Without it the goggles won't power on. Confirm preferred form factor."
     },
     {
       "id": "hex-driver-set",
@@ -198,7 +198,7 @@
       "retailers": [],
       "links": { "review": null, "affiliate": null },
       "tags": ["tools", "gap"],
-      "notes": "Your original screwdriver TODO. The Avatar Pro Kit includes only a screw kit, NOT a driver — so you still need an FPV hex/Phillips driver set for assembly and prop changes."
+      "notes": "The Avatar Pro Kit includes only a screw kit, not a driver — you still need an FPV hex/Phillips driver set for assembly and prop changes."
     }
   ]
 }

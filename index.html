@@ -6,106 +6,118 @@
 <title>drone-stats — FPV kit</title>
 <style>
   :root {
-    --bg: #0a0e14;
-    --panel: #121823;
-    --panel-2: #1a2230;
-    --line: #243044;
-    --ink: #e6edf3;
-    --muted: #7d8da3;
-    --dim: #4d5b70;
-    --accent: #2de0c2;      /* OSD cyan-green */
-    --accent-dim: #1a7e6f;
-    --have: #3fb950;
-    --ordered: #d9a441;
-    --want: #58a6ff;
-    --idea: #8b6fd6;
-    --alert: #f0563a;
-    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --bg: #0a0e15;
+    --panel: #121926;
+    --panel-2: #18202e;
+    --line: rgba(255,255,255,.07);
+    --line-2: rgba(255,255,255,.12);
+    --ink: #eaf0f7;
+    --muted: #8595aa;
+    --faint: #5a6b80;
+    --accent: #34e1c4;
+    --have: #46c46a;
+    --ordered: #e0ad48;
+    --want: #5aa6ff;
+    --idea: #9a82e0;
+    --alert: #f2603f;
+    --sans: -apple-system, BlinkMacSystemFont, "Inter", system-ui, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--bg); color: var(--ink);
-    font-family: var(--mono); -webkit-font-smoothing: antialiased; }
-  body { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; line-height: 1.5; }
+    font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  body { max-width: 1180px; margin: 0 auto; padding: 30px 22px 90px;
+    background-image: radial-gradient(60% 50% at 50% -10%, rgba(52,225,196,.07), transparent 70%); }
   a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
 
-  /* header */
-  header { border: 1px solid var(--line); border-radius: 10px;
-    background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100%);
-    padding: 20px 22px; margin-bottom: 22px; position: relative; overflow: hidden; }
-  header::before { content: ""; position: absolute; inset: 0;
-    background: radial-gradient(120% 100% at 100% 0%, rgba(45,224,194,.10), transparent 60%); }
-  .title { font-size: 22px; font-weight: 700; letter-spacing: .5px; }
-  .title b { color: var(--accent); }
-  .sub { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
-  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; position: relative; }
-  .stat { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px;
-    padding: 8px 12px; min-width: 84px; }
-  .stat .n { font-size: 20px; font-weight: 700; line-height: 1; }
+  /* ---- header ---- */
+  header { margin-bottom: 30px; }
+  .brand { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+  .brand b { color: var(--accent); }
+  .brand .mono { font-family: var(--mono); font-weight: 400; color: var(--muted);
+    font-size: 12px; letter-spacing: 0; margin-left: 10px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 11px 15px; min-width: 92px; flex: 0 0 auto; }
+  .stat .n { font-family: var(--mono); font-size: 22px; font-weight: 600; line-height: 1; }
   .stat .l { font-size: 10.5px; color: var(--muted); text-transform: uppercase;
-    letter-spacing: .8px; margin-top: 5px; }
+    letter-spacing: .08em; margin-top: 7px; }
+  .stat.cost { background: linear-gradient(180deg, rgba(52,225,196,.10), rgba(52,225,196,.02));
+    border-color: rgba(52,225,196,.28); }
+  .stat.cost .n { color: var(--accent); }
+  .stat.alert .n { color: var(--alert); }
 
-  /* build section */
-  .build { margin-bottom: 26px; }
-  .build-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
-    border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 14px; }
-  .build-name { font-size: 16px; font-weight: 700; }
-  .build-summary { color: var(--muted); font-size: 12.5px; flex: 1 1 240px; }
-  .targets { display: flex; gap: 6px; flex-wrap: wrap; }
-  .tgt { font-size: 10.5px; padding: 2px 8px; border-radius: 20px; color: var(--accent);
-    border: 1px solid var(--accent-dim); background: rgba(45,224,194,.06); }
+  /* ---- build ---- */
+  .build { margin-top: 34px; }
+  .build-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+  .build-name { font-size: 18px; font-weight: 650; letter-spacing: -.01em; }
+  .targets { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+  .tgt { font-family: var(--mono); font-size: 11px; padding: 3px 9px; border-radius: 7px;
+    color: var(--accent); background: rgba(52,225,196,.08); border: 1px solid rgba(52,225,196,.2); }
+  .build-summary { color: var(--muted); font-size: 13px; margin: 2px 0 14px; max-width: 70ch; }
 
-  /* compat banner */
-  .compat { font-size: 12px; padding: 8px 12px; border-radius: 8px; margin-bottom: 14px;
-    display: flex; gap: 8px; align-items: flex-start; }
-  .compat.ok { color: var(--have); border: 1px solid rgba(63,185,80,.35); background: rgba(63,185,80,.07); }
-  .compat.warn { color: var(--alert); border: 1px solid rgba(240,86,58,.35); background: rgba(240,86,58,.07); }
-  .compat ul { margin: 4px 0 0; padding-left: 18px; }
+  .progress { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .bar { flex: 1; height: 6px; border-radius: 6px; background: var(--panel-2);
+    overflow: hidden; border: 1px solid var(--line); }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--have), var(--accent)); }
+  .progress .pct { font-family: var(--mono); font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .compat-flag { font-family: var(--mono); font-size: 11px; padding: 3px 9px; border-radius: 7px; white-space: nowrap; }
+  .compat-flag.ok { color: var(--have); background: rgba(70,196,106,.1); border: 1px solid rgba(70,196,106,.25); }
+  .compat-flag.warn { color: var(--alert); background: rgba(242,96,63,.1); border: 1px solid rgba(242,96,63,.3); cursor: help; }
 
-  /* parts grid */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
-    padding: 13px 14px; display: flex; flex-direction: column; gap: 8px; position: relative; }
-  .card.crit { border-color: rgba(240,86,58,.45); box-shadow: inset 3px 0 0 var(--alert); }
-  .card-top { display: flex; align-items: flex-start; gap: 10px; }
-  .icon { font-size: 20px; line-height: 1; filter: saturate(.9); }
-  .pname { font-weight: 600; font-size: 13.5px; }
-  .pbrand { color: var(--muted); font-size: 11px; }
-  .right { margin-left: auto; text-align: right; display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
-  .chip { font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .6px; white-space: nowrap; }
-  .s-have { color: var(--have); border: 1px solid rgba(63,185,80,.4); background: rgba(63,185,80,.08); }
-  .s-ordered { color: var(--ordered); border: 1px solid rgba(217,164,65,.4); background: rgba(217,164,65,.08); }
-  .s-want { color: var(--want); border: 1px solid rgba(88,166,255,.4); background: rgba(88,166,255,.08); }
-  .s-idea { color: var(--idea); border: 1px solid rgba(139,111,214,.4); background: rgba(139,111,214,.08); }
-  .qty { font-size: 10.5px; color: var(--muted); }
-  .note { font-size: 11.5px; color: #aab6c6; }
-  .tags { display: flex; gap: 5px; flex-wrap: wrap; }
-  .tag { font-size: 9.5px; color: var(--muted); border: 1px solid var(--line);
-    border-radius: 4px; padding: 1px 6px; }
-  .tag.crit { color: var(--alert); border-color: rgba(240,86,58,.4); }
-  .links { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11.5px; margin-top: 2px; }
-  .verify { font-size: 10.5px; color: var(--ordered); }
-  .price { font-size: 11px; color: var(--muted); }
+  /* ---- cards ---- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 13px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 15px 16px; display: flex; flex-direction: column; gap: 10px;
+    transition: border-color .15s, transform .15s; position: relative; }
+  .card:hover { border-color: var(--line-2); transform: translateY(-2px); }
+  .card.crit::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px;
+    width: 3px; border-radius: 3px; background: var(--alert); }
+  .row1 { display: flex; align-items: flex-start; gap: 12px; }
+  .ico { width: 38px; height: 38px; flex: 0 0 auto; display: grid; place-items: center;
+    font-size: 19px; background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 10px; }
+  .id { min-width: 0; flex: 1; }
+  .nm { font-weight: 600; font-size: 14.5px; letter-spacing: -.01em; line-height: 1.25; }
+  .br { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex: 0 0 auto; }
+  .chip { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 3px 8px;
+    border-radius: 20px; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; }
+  .s-have { color: var(--have); background: rgba(70,196,106,.12); }
+  .s-ordered { color: var(--ordered); background: rgba(224,173,72,.12); }
+  .s-want { color: var(--want); background: rgba(90,166,255,.12); }
+  .s-idea { color: var(--idea); background: rgba(154,130,224,.12); }
+  .price { font-family: var(--mono); font-size: 13px; font-weight: 600; }
+  .qty { font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
-  footer { margin-top: 40px; color: var(--dim); font-size: 11px; text-align: center; }
-  .err { border: 1px solid var(--alert); background: rgba(240,86,58,.08); color: var(--ink);
-    border-radius: 10px; padding: 18px; font-size: 13px; }
-  .err code { color: var(--accent); }
+  .specs { display: flex; flex-wrap: wrap; gap: 5px; }
+  .spec { font-family: var(--mono); font-size: 10.5px; padding: 2px 8px; border-radius: 6px;
+    border: 1px solid var(--line); color: var(--muted); }
+  .spec.match { color: var(--have); border-color: rgba(70,196,106,.3); background: rgba(70,196,106,.06); }
+  .spec.miss { color: var(--alert); border-color: rgba(242,96,63,.35); background: rgba(242,96,63,.06); }
+
+  .note { font-size: 12.5px; color: #b3c0d1; line-height: 1.45; }
+  .verify { font-size: 11px; color: var(--ordered); display: flex; gap: 5px; align-items: center; }
+  .links { display: flex; gap: 8px; margin-top: 2px; }
+  .lk { font-size: 11.5px; font-family: var(--mono); padding: 4px 10px; border-radius: 8px;
+    border: 1px solid var(--line); color: var(--muted); transition: all .12s; }
+  .lk:hover { border-color: var(--accent); color: var(--accent); }
+  .lk.buy { color: var(--accent); border-color: rgba(52,225,196,.3); }
+
+  footer { margin-top: 50px; color: var(--faint); font-size: 11px; text-align: center;
+    font-family: var(--mono); }
+  .err { border: 1px solid var(--alert); background: rgba(242,96,63,.08);
+    border-radius: 14px; padding: 20px; font-size: 13.5px; line-height: 1.6; }
+  .err code { color: var(--accent); font-family: var(--mono); }
 </style>
 </head>
 <body>
   <header>
-    <div class="title"><b>drone</b>-stats</div>
-    <div class="sub" id="sub">loading kit…</div>
+    <div class="brand"><b>drone</b>-stats<span class="mono" id="sub">loading…</span></div>
     <div class="stats" id="stats"></div>
   </header>
-
   <main id="main"></main>
-
-  <footer>
-    static · github-pages-ready · data lives in <code style="color:var(--muted)">data/*.json</code>
-  </footer>
+  <footer>static · github-pages-ready · source of truth: data/*.json</footer>
 
 <script>
 const STATUS = {
@@ -114,19 +126,21 @@ const STATUS = {
   want:    { label: "Want",    cls: "s-want" },
   idea:    { label: "Idea",    cls: "s-idea" },
 };
+const TARGET_KEYS = ["videoSystem", "radioProtocol", "cellCount", "connector"];
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+const opts = v => String(v).split("|").map(s => s.trim());
+const priceOf = p => (p.retailers || []).find(r => r.price != null) || null;
 
-// The "tiny built-in checker": compare each part's compat tags to the build's target.
+// tiny built-in compat checker: part's compat tags vs the build's target
 function checkBuild(build, partsById) {
   const warnings = [];
   for (const item of build.items) {
     const p = partsById[item.partId];
-    if (!p || item.status === "idea") continue; // ideas don't have to be compatible yet
-    for (const [key, want] of Object.entries(build.target || {})) {
-      const got = p.compat?.[key];
-      if (want && got && !String(got).split("|").map(s => s.trim()).includes(want)) {
-        warnings.push(`${p.name}: ${key} is "${got}" but build targets "${want}"`);
-      }
+    if (!p || item.status === "idea") continue;
+    for (const [k, want] of Object.entries(build.target || {})) {
+      const got = p.compat?.[k];
+      if (want && got && !opts(got).includes(want))
+        warnings.push(`${p.name}: ${k} is "${got}" but build targets "${want}"`);
     }
   }
   return warnings;
@@ -142,9 +156,9 @@ async function load() {
   } catch (e) {
     document.getElementById("main").innerHTML =
       `<div class="err">Couldn't load the data files. If you opened this as a
-       <code>file://</code> path, the browser blocks <code>fetch()</code>. Serve it locally:
-       <br><br><code>python3 -m http.server</code> &nbsp;or&nbsp; <code>npx serve</code>
-       <br>then open the printed <code>http://localhost</code> URL.</div>`;
+       <code>file://</code> path the browser blocks <code>fetch()</code>. Serve it:
+       <br><br><code>npm start</code><br>then open the printed
+       <code>http://localhost</code> URL.</div>`;
     document.getElementById("sub").textContent = "load error";
     return;
   }
@@ -152,80 +166,100 @@ async function load() {
   const partsById = Object.fromEntries(catalog.parts.map(p => [p.id, p]));
   const catById = Object.fromEntries(catalog.categories.map(c => [c.id, c]));
   const allItems = kit.builds.flatMap(b => b.items);
-
-  // header
   const count = s => allItems.filter(i => i.status === s).length;
+
+  // cost to buy: want + ordered, qty * known price
+  let toBuy = 0, cur = "USD";
+  for (const i of allItems) {
+    if (i.status !== "want" && i.status !== "ordered") continue;
+    const pr = priceOf(partsById[i.partId] || {});
+    if (pr) { toBuy += pr.price * (i.qty || 1); cur = pr.currency || cur; }
+  }
   const critGaps = allItems.filter(i =>
     i.status !== "have" && i.status !== "ordered" &&
     (partsById[i.partId]?.tags || []).includes("critical-path")).length;
+
   document.getElementById("sub").innerHTML =
     `${esc(kit.owner?.name || "unnamed pilot")} · updated ${esc(kit.owner?.updated || "—")}`;
   document.getElementById("stats").innerHTML = [
-    ["#" + allItems.length, "parts"],
-    [count("have"), "have"],
-    [count("ordered") + count("want"), "to buy"],
-    [count("idea"), "ideas"],
-    [critGaps, "critical gaps"],
-  ].map(([n, l]) => `<div class="stat"><div class="n"${l==="critical gaps"&&critGaps?' style="color:var(--alert)"':""}>${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join("");
+    { n: allItems.length, l: "parts" },
+    { n: count("have"), l: "have" },
+    { n: count("want") + count("ordered"), l: "to buy" },
+    { n: critGaps, l: "critical gaps", c: critGaps ? "alert" : "" },
+    { n: `~${cur === "USD" ? "$" : ""}${Math.round(toBuy)}`, l: `to buy${cur !== "USD" ? " " + cur : ""}`, c: "cost" },
+  ].map(s => `<div class="stat ${s.c || ""}"><div class="n">${esc(s.n)}</div><div class="l">${esc(s.l)}</div></div>`).join("");
 
-  // builds
   const order = { have: 0, ordered: 1, want: 2, idea: 3 };
   document.getElementById("main").innerHTML = kit.builds.map(build => {
+    const items = [...build.items].sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9));
+    const nonIdea = items.filter(i => i.status !== "idea");
+    const acquired = nonIdea.filter(i => i.status === "have" || i.status === "ordered").length;
+    const pct = nonIdea.length ? Math.round(100 * acquired / nonIdea.length) : 0;
     const warns = checkBuild(build, partsById);
-    const compat = warns.length
-      ? `<div class="compat warn">⚠ compatibility<ul>${warns.map(w => `<li>${esc(w)}</li>`).join("")}</ul></div>`
-      : `<div class="compat ok">✓ all owned/planned parts match this build's target specs</div>`;
+    const flag = warns.length
+      ? `<span class="compat-flag warn" title="${esc(warns.join(" — "))}">⚠ ${warns.length} compat issue${warns.length>1?"s":""}</span>`
+      : `<span class="compat-flag ok">✓ compatible</span>`;
+    const targets = Object.entries(build.target || {}).filter(([,v]) => v)
+      .map(([k, v]) => `<span class="tgt">${esc(v)}</span>`).join("");
 
-    const targets = Object.entries(build.target || {})
-      .filter(([,v]) => v).map(([k,v]) => `<span class="tgt">${esc(k)}: ${esc(v)}</span>`).join("");
+    const cards = items.map(item => {
+      const p = partsById[item.partId];
+      if (!p) return `<div class="card"><div class="nm">⚠ unknown part: ${esc(item.partId)}</div></div>`;
+      const st = STATUS[item.status] || { label: item.status, cls: "" };
+      const cat = catById[p.category] || { icon: "▪" };
+      const isCrit = (p.tags || []).includes("critical-path") && item.status !== "have" && item.status !== "ordered";
+      const pr = priceOf(p);
 
-    const cards = [...build.items]
-      .sort((a,b) => (order[a.status] ?? 9) - (order[b.status] ?? 9))
-      .map(item => {
-        const p = partsById[item.partId];
-        if (!p) return `<div class="card"><div class="pname">⚠ unknown part: ${esc(item.partId)}</div></div>`;
-        const st = STATUS[item.status] || { label: item.status, cls: "" };
-        const cat = catById[p.category] || { icon: "▪", label: p.category };
-        const isCrit = (p.tags || []).includes("critical-path") && item.status !== "have" && item.status !== "ordered";
-        const verify = p.specs?.verify ? `<div class="verify">⚑ spec unconfirmed — verify on product page</div>` : "";
-        const tags = (p.tags || []).map(t =>
-          `<span class="tag${t==="critical-path"?" crit":""}">${esc(t)}</span>`).join("");
-        const retailer = (p.retailers || []).find(r => r.url);
-        const priced = (p.retailers || []).find(r => r.price != null);
-        const links = [
-          retailer ? `<a href="${esc(retailer.url)}" target="_blank" rel="noopener">buy ↗</a>` : "",
-          p.links?.review ? `<a href="${esc(p.links.review)}" target="_blank" rel="noopener">review ↗</a>` : "",
-          p.links?.affiliate ? `<a href="${esc(p.links.affiliate)}" target="_blank" rel="noopener">link ↗</a>` : "",
-        ].filter(Boolean).join("");
-        return `
-          <div class="card${isCrit ? " crit" : ""}">
-            <div class="card-top">
-              <span class="icon">${cat.icon}</span>
-              <div>
-                <div class="pname">${esc(p.name)}</div>
-                <div class="pbrand">${esc(p.brand || "")}</div>
-              </div>
-              <div class="right">
-                <span class="chip ${st.cls}">${esc(st.label)}</span>
-                ${item.qty > 1 ? `<span class="qty">×${esc(item.qty)}</span>` : ""}
-              </div>
+      // purposeful spec chips: show the build-target dimensions, colored by match
+      const specs = TARGET_KEYS.map(k => {
+        const got = p.compat?.[k];
+        if (!got) return "";
+        const want = build.target?.[k];
+        if (want) {
+          const ok = opts(got).includes(want);
+          return `<span class="spec ${ok ? "match" : "miss"}">${esc(ok ? want : got)}</span>`;
+        }
+        return `<span class="spec">${esc(opts(got)[0])}${opts(got).length > 1 ? "+" : ""}</span>`;
+      }).filter(Boolean).join("");
+
+      const links = [
+        (p.retailers || []).find(r => r.url) && `<a class="lk buy" href="${esc((p.retailers.find(r=>r.url)).url)}" target="_blank" rel="noopener">buy ↗</a>`,
+        p.links?.review && `<a class="lk" href="${esc(p.links.review)}" target="_blank" rel="noopener">review ↗</a>`,
+      ].filter(Boolean).join("");
+
+      return `
+        <div class="card${isCrit ? " crit" : ""}">
+          <div class="row1">
+            <div class="ico">${cat.icon}</div>
+            <div class="id">
+              <div class="nm">${esc(p.name)}</div>
+              <div class="br">${esc(p.brand || "")}</div>
             </div>
-            ${item.note ? `<div class="note">${esc(item.note)}</div>` : ""}
-            ${priced ? `<div class="price">~${esc(priced.price)} ${esc(priced.currency||"")} @ ${esc(priced.name)}</div>` : ""}
-            ${verify}
-            ${tags ? `<div class="tags">${tags}</div>` : ""}
-            ${links ? `<div class="links">${links}</div>` : ""}
-          </div>`;
-      }).join("");
+            <div class="meta">
+              <span class="chip ${st.cls}">${esc(st.label)}</span>
+              ${pr ? `<span class="price">${pr.currency==="USD"?"$":""}${esc(pr.price)}${pr.currency!=="USD"?" "+esc(pr.currency):""}</span>` : ""}
+              ${item.qty > 1 ? `<span class="qty">×${esc(item.qty)}</span>` : ""}
+            </div>
+          </div>
+          ${specs ? `<div class="specs">${specs}</div>` : ""}
+          ${item.note ? `<div class="note">${esc(item.note)}</div>` : ""}
+          ${p.specs?.verify ? `<div class="verify">⚑ spec unconfirmed — verify on product page</div>` : ""}
+          ${links ? `<div class="links">${links}</div>` : ""}
+        </div>`;
+    }).join("");
 
     return `
       <section class="build">
-        <div class="build-head">
+        <div class="build-top">
           <span class="build-name">${esc(build.name)}</span>
-          <span class="build-summary">${esc(build.summary || "")}</span>
           <span class="targets">${targets}</span>
         </div>
-        ${compat}
+        ${build.summary ? `<div class="build-summary">${esc(build.summary)}</div>` : ""}
+        <div class="progress">
+          <span class="pct">${acquired}/${nonIdea.length} acquired</span>
+          <div class="bar"><i style="width:${pct}%"></i></div>
+          ${flag}
+        </div>
         <div class="grid">${cards}</div>
       </section>`;
   }).join("");
