@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "_comment": "CATALOG = the shareable parts database. Specs + compatibility, independent of whether you own a part. kit.json references these by `id`. `verify: true` marks specs I wasn't 100% sure of — confirm before trusting.",
+  "categories": [
+    { "id": "radio",   "label": "Radio / Transmitter", "icon": "📻" },
+    { "id": "drone",   "label": "Drone / Frame",        "icon": "🚁" },
+    { "id": "airunit", "label": "Air Unit (VTX + Cam)", "icon": "📹" },
+    { "id": "goggles", "label": "Goggles / VRX",        "icon": "🥽" },
+    { "id": "motor",   "label": "Motors",               "icon": "⚙️" },
+    { "id": "battery", "label": "Batteries",            "icon": "🔋" },
+    { "id": "charger", "label": "Chargers",             "icon": "🔌" },
+    { "id": "tool",    "label": "Tools / Misc",         "icon": "🛠️" }
+  ],
+  "parts": [
+    {
+      "id": "radiomaster-pocket-elrs",
+      "name": "RadioMaster Pocket",
+      "brand": "RadioMaster",
+      "category": "radio",
+      "specs": { "protocol": "elrs", "gimbals": "hall", "screen": "monochrome" },
+      "compat": { "radioProtocol": "elrs" },
+      "retailers": [
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/radiomaster-pocket-elrs", "price": null, "currency": "EUR", "lastChecked": null }
+      ],
+      "links": { "review": "https://www.youtube.com/watch?v=GgaWMvAHZi8", "affiliate": null },
+      "tags": ["beginner", "elrs"],
+      "notes": "Compact ELRS radio. Pairs with any ELRS receiver, including the one built into the Pavo Pico ELRS variant."
+    },
+    {
+      "id": "betafpv-pavo-pico",
+      "name": "Pavo Pico (Brushless Whoop)",
+      "brand": "BetaFPV",
+      "category": "drone",
+      "specs": { "class": "whoop", "propSize": "2in", "cellCount": "1S", "batteryConnector": "A30", "videoMount": "walksnail-avatar | analog | moonlight (custom)", "verify": true },
+      "compat": { "radioProtocol": "elrs", "videoSystem": "walksnail | analog", "cellCount": "1S" },
+      "retailers": [
+        { "name": "BetaFPV", "url": "https://betafpv.com/products/pavo-pico-brushless-whoop?variant=40164423696518", "price": null, "currency": "USD", "lastChecked": null }
+      ],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["whoop", "cinewhoop", "owned"],
+      "notes": "Your drone. Needs the Walksnail Avatar HD air unit OR a custom Moonlight mount to fly digital FPV. Buy the ELRS variant so it binds to the RadioMaster Pocket out of the box."
+    },
+    {
+      "id": "walksnail-avatar-hd-pro-kit",
+      "name": "Walksnail Avatar HD Pro Kit",
+      "brand": "Walksnail / Caddx",
+      "category": "airunit",
+      "specs": { "videoSystem": "walksnail", "includesScrewdriver": true, "verify": true },
+      "compat": { "videoSystem": "walksnail" },
+      "retailers": [
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-pro-kit", "price": null, "currency": "EUR", "lastChecked": null },
+        { "name": "Caddx", "url": "https://caddxfpv.com/products/walksnail-avatar-hd-goggles-x", "price": null, "currency": "USD", "lastChecked": null }
+      ],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["digital", "walksnail", "critical-path"],
+      "notes": "The air unit (camera + VTX) that makes the Pico fly digital FPV. Gating purchase. Bundle includes a screwdriver, covering your tools gap. Confirm which camera variant ships in the kit."
+    },
+    {
+      "id": "walksnail-avatar-1s-kit",
+      "name": "Walksnail Avatar HD 1S Kit",
+      "brand": "Walksnail / Caddx",
+      "category": "airunit",
+      "specs": { "videoSystem": "walksnail", "cellCount": "1S", "weightClass": "ultralight", "verify": true },
+      "compat": { "videoSystem": "walksnail", "cellCount": "1S" },
+      "retailers": [],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["digital", "walksnail", "lightweight"],
+      "notes": "Lighter 1S-oriented Avatar air unit — alternative to the Pro Kit for whoop weight budgets. Compare weight & camera vs the Pro Kit before deciding."
+    },
+    {
+      "id": "walksnail-moonlight",
+      "name": "Walksnail Moonlight Camera",
+      "brand": "Walksnail / Caddx",
+      "category": "airunit",
+      "specs": { "videoSystem": "walksnail", "lowLight": true, "verify": true },
+      "compat": { "videoSystem": "walksnail" },
+      "retailers": [],
+      "links": { "review": "https://oscarliang.com/walksnail-moonlight/", "affiliate": null },
+      "tags": ["digital", "walksnail", "low-light", "future"],
+      "notes": "Low-light Walksnail camera — a later upgrade. Needs a custom mount on the Pico per your notes."
+    },
+    {
+      "id": "walksnail-avatar-goggles-x",
+      "name": "Walksnail Avatar HD Goggles X",
+      "brand": "Walksnail / Caddx",
+      "category": "goggles",
+      "specs": { "videoSystem": "walksnail", "verify": true },
+      "compat": { "videoSystem": "walksnail" },
+      "retailers": [
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-goggles-x", "price": null, "currency": "EUR", "lastChecked": null },
+        { "name": "Caddx", "url": "https://caddxfpv.com/products/walksnail-avatar-hd-goggles-x?variant=47684946460974", "price": null, "currency": "USD", "lastChecked": null }
+      ],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["digital", "walksnail", "critical-path"],
+      "notes": "Your goggles. Must match the air unit's video system (Walksnail). Without these you can't see what the drone sees."
+    },
+    {
+      "id": "betafpv-pavo20",
+      "name": "Pavo 20",
+      "brand": "BetaFPV",
+      "category": "drone",
+      "specs": { "class": "cinewhoop", "propSize": "2in", "cellCount": "2S | 4S", "verify": true },
+      "compat": { "radioProtocol": "elrs", "videoSystem": "walksnail | analog" },
+      "retailers": [],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["cinewhoop", "future", "longer-flight"],
+      "notes": "Future second drone — longer flight time than the Pico. Can reuse a Moonlight frame. Different cell count likely means different batteries/charger than the Pico."
+    },
+    {
+      "id": "betafpv-1102-18000kv",
+      "name": "BetaFPV 1102 18000KV Motors",
+      "brand": "BetaFPV",
+      "category": "motor",
+      "specs": { "kv": 18000, "size": "1102", "cellCount": "1S", "verify": true },
+      "compat": { "cellCount": "1S", "frameClass": "whoop" },
+      "retailers": [],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["whoop", "1S", "spare"],
+      "notes": "High-kv 1S whoop motors matched to the Pico. Useful as spares / rebuild parts."
+    },
+    {
+      "id": "betafpv-1s-lipo-bt2.0",
+      "name": "1S LiPo/LiHV (BT2.0 / A30)",
+      "brand": "BetaFPV / generic",
+      "category": "battery",
+      "specs": { "cellCount": "1S", "connector": "A30 | BT2.0", "capacityMah": "300-550", "verify": true },
+      "compat": { "cellCount": "1S", "connector": "A30" },
+      "retailers": [],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["1S", "consumable", "gap"],
+      "notes": "GAP in your kit. The Pico is 1S — confirm whether it uses A30 or BT2.0 connectors and buy a matching set (you'll want 4-8 to actually enjoy a session). Capacity trades flight time vs weight."
+    },
+    {
+      "id": "1s-whoop-charger",
+      "name": "1S Whoop Charger (multi-port)",
+      "brand": "BetaFPV / ISDT / generic",
+      "category": "charger",
+      "specs": { "cellCount": "1S", "ports": "6+", "connector": "A30 | BT2.0", "verify": true },
+      "compat": { "cellCount": "1S", "connector": "A30" },
+      "retailers": [],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["1S", "gap"],
+      "notes": "HIDDEN GAP — not in your checklist. You need a charger matching your battery connector and cell count. A multi-port 1S board lets you charge several packs between flights."
+    }
+  ]
+}

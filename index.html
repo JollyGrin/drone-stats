@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>drone-stats — FPV kit</title>
+<style>
+  :root {
+    --bg: #0a0e14;
+    --panel: #121823;
+    --panel-2: #1a2230;
+    --line: #243044;
+    --ink: #e6edf3;
+    --muted: #7d8da3;
+    --dim: #4d5b70;
+    --accent: #2de0c2;      /* OSD cyan-green */
+    --accent-dim: #1a7e6f;
+    --have: #3fb950;
+    --ordered: #d9a441;
+    --want: #58a6ff;
+    --idea: #8b6fd6;
+    --alert: #f0563a;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--mono); -webkit-font-smoothing: antialiased; }
+  body { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; line-height: 1.5; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* header */
+  header { border: 1px solid var(--line); border-radius: 10px;
+    background: linear-gradient(180deg, var(--panel) 0%, var(--bg) 100%);
+    padding: 20px 22px; margin-bottom: 22px; position: relative; overflow: hidden; }
+  header::before { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(120% 100% at 100% 0%, rgba(45,224,194,.10), transparent 60%); }
+  .title { font-size: 22px; font-weight: 700; letter-spacing: .5px; }
+  .title b { color: var(--accent); }
+  .sub { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; position: relative; }
+  .stat { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 12px; min-width: 84px; }
+  .stat .n { font-size: 20px; font-weight: 700; line-height: 1; }
+  .stat .l { font-size: 10.5px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: .8px; margin-top: 5px; }
+
+  /* build section */
+  .build { margin-bottom: 26px; }
+  .build-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 14px; }
+  .build-name { font-size: 16px; font-weight: 700; }
+  .build-summary { color: var(--muted); font-size: 12.5px; flex: 1 1 240px; }
+  .targets { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tgt { font-size: 10.5px; padding: 2px 8px; border-radius: 20px; color: var(--accent);
+    border: 1px solid var(--accent-dim); background: rgba(45,224,194,.06); }
+
+  /* compat banner */
+  .compat { font-size: 12px; padding: 8px 12px; border-radius: 8px; margin-bottom: 14px;
+    display: flex; gap: 8px; align-items: flex-start; }
+  .compat.ok { color: var(--have); border: 1px solid rgba(63,185,80,.35); background: rgba(63,185,80,.07); }
+  .compat.warn { color: var(--alert); border: 1px solid rgba(240,86,58,.35); background: rgba(240,86,58,.07); }
+  .compat ul { margin: 4px 0 0; padding-left: 18px; }
+
+  /* parts grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 14px; display: flex; flex-direction: column; gap: 8px; position: relative; }
+  .card.crit { border-color: rgba(240,86,58,.45); box-shadow: inset 3px 0 0 var(--alert); }
+  .card-top { display: flex; align-items: flex-start; gap: 10px; }
+  .icon { font-size: 20px; line-height: 1; filter: saturate(.9); }
+  .pname { font-weight: 600; font-size: 13.5px; }
+  .pbrand { color: var(--muted); font-size: 11px; }
+  .right { margin-left: auto; text-align: right; display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
+  .chip { font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .6px; white-space: nowrap; }
+  .s-have { color: var(--have); border: 1px solid rgba(63,185,80,.4); background: rgba(63,185,80,.08); }
+  .s-ordered { color: var(--ordered); border: 1px solid rgba(217,164,65,.4); background: rgba(217,164,65,.08); }
+  .s-want { color: var(--want); border: 1px solid rgba(88,166,255,.4); background: rgba(88,166,255,.08); }
+  .s-idea { color: var(--idea); border: 1px solid rgba(139,111,214,.4); background: rgba(139,111,214,.08); }
+  .qty { font-size: 10.5px; color: var(--muted); }
+  .note { font-size: 11.5px; color: #aab6c6; }
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 9.5px; color: var(--muted); border: 1px solid var(--line);
+    border-radius: 4px; padding: 1px 6px; }
+  .tag.crit { color: var(--alert); border-color: rgba(240,86,58,.4); }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11.5px; margin-top: 2px; }
+  .verify { font-size: 10.5px; color: var(--ordered); }
+  .price { font-size: 11px; color: var(--muted); }
+
+  footer { margin-top: 40px; color: var(--dim); font-size: 11px; text-align: center; }
+  .err { border: 1px solid var(--alert); background: rgba(240,86,58,.08); color: var(--ink);
+    border-radius: 10px; padding: 18px; font-size: 13px; }
+  .err code { color: var(--accent); }
+</style>
+</head>
+<body>
+  <header>
+    <div class="title"><b>drone</b>-stats</div>
+    <div class="sub" id="sub">loading kit…</div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <main id="main"></main>
+
+  <footer>
+    static · github-pages-ready · data lives in <code style="color:var(--muted)">data/*.json</code>
+  </footer>
+
+<script>
+const STATUS = {
+  have:    { label: "Have",    cls: "s-have" },
+  ordered: { label: "Ordered", cls: "s-ordered" },
+  want:    { label: "Want",    cls: "s-want" },
+  idea:    { label: "Idea",    cls: "s-idea" },
+};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+// The "tiny built-in checker": compare each part's compat tags to the build's target.
+function checkBuild(build, partsById) {
+  const warnings = [];
+  for (const item of build.items) {
+    const p = partsById[item.partId];
+    if (!p || item.status === "idea") continue; // ideas don't have to be compatible yet
+    for (const [key, want] of Object.entries(build.target || {})) {
+      const got = p.compat?.[key];
+      if (want && got && !String(got).split("|").map(s => s.trim()).includes(want)) {
+        warnings.push(`${p.name}: ${key} is "${got}" but build targets "${want}"`);
+      }
+    }
+  }
+  return warnings;
+}
+
+async function load() {
+  let catalog, kit;
+  try {
+    [catalog, kit] = await Promise.all([
+      fetch("data/catalog.json").then(r => r.json()),
+      fetch("data/kit.json").then(r => r.json()),
+    ]);
+  } catch (e) {
+    document.getElementById("main").innerHTML =
+      `<div class="err">Couldn't load the data files. If you opened this as a
+       <code>file://</code> path, the browser blocks <code>fetch()</code>. Serve it locally:
+       <br><br><code>python3 -m http.server</code> &nbsp;or&nbsp; <code>npx serve</code>
+       <br>then open the printed <code>http://localhost</code> URL.</div>`;
+    document.getElementById("sub").textContent = "load error";
+    return;
+  }
+
+  const partsById = Object.fromEntries(catalog.parts.map(p => [p.id, p]));
+  const catById = Object.fromEntries(catalog.categories.map(c => [c.id, c]));
+  const allItems = kit.builds.flatMap(b => b.items);
+
+  // header
+  const count = s => allItems.filter(i => i.status === s).length;
+  const critGaps = allItems.filter(i =>
+    i.status !== "have" && i.status !== "ordered" &&
+    (partsById[i.partId]?.tags || []).includes("critical-path")).length;
+  document.getElementById("sub").innerHTML =
+    `${esc(kit.owner?.name || "unnamed pilot")} · updated ${esc(kit.owner?.updated || "—")}`;
+  document.getElementById("stats").innerHTML = [
+    ["#" + allItems.length, "parts"],
+    [count("have"), "have"],
+    [count("ordered") + count("want"), "to buy"],
+    [count("idea"), "ideas"],
+    [critGaps, "critical gaps"],
+  ].map(([n, l]) => `<div class="stat"><div class="n"${l==="critical gaps"&&critGaps?' style="color:var(--alert)"':""}>${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join("");
+
+  // builds
+  const order = { have: 0, ordered: 1, want: 2, idea: 3 };
+  document.getElementById("main").innerHTML = kit.builds.map(build => {
+    const warns = checkBuild(build, partsById);
+    const compat = warns.length
+      ? `<div class="compat warn">⚠ compatibility<ul>${warns.map(w => `<li>${esc(w)}</li>`).join("")}</ul></div>`
+      : `<div class="compat ok">✓ all owned/planned parts match this build's target specs</div>`;
+
+    const targets = Object.entries(build.target || {})
+      .filter(([,v]) => v).map(([k,v]) => `<span class="tgt">${esc(k)}: ${esc(v)}</span>`).join("");
+
+    const cards = [...build.items]
+      .sort((a,b) => (order[a.status] ?? 9) - (order[b.status] ?? 9))
+      .map(item => {
+        const p = partsById[item.partId];
+        if (!p) return `<div class="card"><div class="pname">⚠ unknown part: ${esc(item.partId)}</div></div>`;
+        const st = STATUS[item.status] || { label: item.status, cls: "" };
+        const cat = catById[p.category] || { icon: "▪", label: p.category };
+        const isCrit = (p.tags || []).includes("critical-path") && item.status !== "have" && item.status !== "ordered";
+        const verify = p.specs?.verify ? `<div class="verify">⚑ spec unconfirmed — verify on product page</div>` : "";
+        const tags = (p.tags || []).map(t =>
+          `<span class="tag${t==="critical-path"?" crit":""}">${esc(t)}</span>`).join("");
+        const retailer = (p.retailers || []).find(r => r.url);
+        const priced = (p.retailers || []).find(r => r.price != null);
+        const links = [
+          retailer ? `<a href="${esc(retailer.url)}" target="_blank" rel="noopener">buy ↗</a>` : "",
+          p.links?.review ? `<a href="${esc(p.links.review)}" target="_blank" rel="noopener">review ↗</a>` : "",
+          p.links?.affiliate ? `<a href="${esc(p.links.affiliate)}" target="_blank" rel="noopener">link ↗</a>` : "",
+        ].filter(Boolean).join("");
+        return `
+          <div class="card${isCrit ? " crit" : ""}">
+            <div class="card-top">
+              <span class="icon">${cat.icon}</span>
+              <div>
+                <div class="pname">${esc(p.name)}</div>
+                <div class="pbrand">${esc(p.brand || "")}</div>
+              </div>
+              <div class="right">
+                <span class="chip ${st.cls}">${esc(st.label)}</span>
+                ${item.qty > 1 ? `<span class="qty">×${esc(item.qty)}</span>` : ""}
+              </div>
+            </div>
+            ${item.note ? `<div class="note">${esc(item.note)}</div>` : ""}
+            ${priced ? `<div class="price">~${esc(priced.price)} ${esc(priced.currency||"")} @ ${esc(priced.name)}</div>` : ""}
+            ${verify}
+            ${tags ? `<div class="tags">${tags}</div>` : ""}
+            ${links ? `<div class="links">${links}</div>` : ""}
+          </div>`;
+      }).join("");
+
+    return `
+      <section class="build">
+        <div class="build-head">
+          <span class="build-name">${esc(build.name)}</span>
+          <span class="build-summary">${esc(build.summary || "")}</span>
+          <span class="targets">${targets}</span>
+        </div>
+        ${compat}
+        <div class="grid">${cards}</div>
+      </section>`;
+  }).join("");
+}
+load();
+</script>
+</body>
+</html>
