@@ -1,0 +1,11 @@
+{
+  "name": "drone-stats",
+  "version": "0.1.0",
+  "description": "Personal FPV drone kit organizer — track parts, check compatibility, share builds.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "dev": "node scripts/serve.js"
+  },
+  "license": "MIT"
+}

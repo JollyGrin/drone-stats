@@ -110,11 +110,10 @@ FPV compatibility is bounded and rule-able:
 
 ## Running the dashboard locally
 
-`fetch()` is blocked on `file://`, so serve it over HTTP:
+`fetch()` is blocked on `file://`, so serve it over HTTP. Pure Node, no install:
 
 ```sh
-python3 -m http.server      # then open http://localhost:8000
-# or:  npx serve
+npm start            # zero-dependency Node server → http://localhost:8000
 ```
 
 On GitHub Pages it's served over HTTP automatically, so it just works.
