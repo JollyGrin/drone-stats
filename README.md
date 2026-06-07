@@ -118,17 +118,22 @@ npm start            # zero-dependency Node server → http://localhost:8000
 
 On GitHub Pages it's served over HTTP automatically, so it just works.
 
-## Current kit snapshot
+## Current kit snapshot (specs researched & corrected 2026-06-07)
 
 | Part | Category | Status |
 |---|---|---|
 | RadioMaster Pocket | Radio (ELRS) | ✅ have |
-| BetaFPV Pavo Pico | Drone | ✅ have |
-| Walksnail Avatar HD Pro Kit | Air unit | 🛒 want (critical path) |
-| Walksnail Avatar Goggles X | Goggles | 🛒 want (critical path) |
-| 1S batteries | Battery | 🛒 want (gap) |
-| 1S charger | Charger | 🛒 want (hidden gap) |
-| BetaFPV 1102 18000KV | Motors | 💡 idea (spares) |
+| BetaFPV Pavo Pico (**2S / XT30**) | Drone | ✅ have |
+| Walksnail Avatar HD Pro Kit (~$159) | Air unit | 🛒 want (critical) |
+| Walksnail Avatar Goggles X (~$459+) | Goggles | 🛒 want (critical) |
+| Goggle battery (Goggles X has none) | Battery | 🛒 want (critical) |
+| LAVA **2S 450mAh XT30** ×6 | Battery | 🛒 want |
+| 2S/XT30 smart charger | Charger | 🛒 want |
+| Hex/Phillips driver set | Tools | 🛒 want |
+| BetaFPV 1102 **14000KV** | Motors | 💡 idea (spares) |
 
-> ⚠️ Several `specs` carry `"verify": true` — they're best-guess and should be
-> confirmed against the product page before you rely on them (esp. battery connector).
+> **Research corrected several wrong assumptions:** the Pico is **2S/XT30** (not 1S/BT2.0),
+> its stock motor is **1102 14000KV** (not 18000KV — that's a 1S Meteor75 motor), the Pro
+> Kit ships a screw kit **not a screwdriver**, and the **Goggles X has no internal battery**.
+> Three specs still carry `"verify": true` (Moonlight→Pico mount, goggle-battery form
+> factor, driver set) — preferences/unconfirmed rather than known-wrong.

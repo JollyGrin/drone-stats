@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "_comment": "KIT = what YOU own/want. `partId` points into catalog.json. `status`: have | ordered | want | idea. A build's `target` specs (videoSystem/radioProtocol/cellCount) are what the compat script checks each part against.",
+  "_comment": "KIT = what YOU own/want. `partId` points into catalog.json. `status`: have | ordered | want | idea. A build's `target` specs (videoSystem/radioProtocol/cellCount) are what the compat check validates each part against.",
   "owner": {
     "name": "",
     "shareUrl": "",
@@ -9,21 +9,23 @@
   "builds": [
     {
       "id": "pico-build",
-      "name": "Pavo Pico — 1S Walksnail Cinewhoop",
-      "summary": "First build. Indoor/low-speed digital whoop on the Walksnail Avatar ecosystem, flown with the RadioMaster Pocket (ELRS).",
+      "name": "Pavo Pico — 2S Walksnail Cinewhoop",
+      "summary": "First build. Digital cinewhoop on the Walksnail Avatar ecosystem, flown with the RadioMaster Pocket (ELRS). 2S / XT30.",
       "target": {
         "videoSystem": "walksnail",
         "radioProtocol": "elrs",
-        "cellCount": "1S"
+        "cellCount": "2S"
       },
       "items": [
         { "partId": "radiomaster-pocket-elrs",     "status": "have", "qty": 1, "purchasedPrice": null, "note": "" },
-        { "partId": "betafpv-pavo-pico",           "status": "have", "qty": 1, "purchasedPrice": null, "note": "Buy/confirm ELRS variant." },
-        { "partId": "walksnail-avatar-hd-pro-kit", "status": "want", "qty": 1, "purchasedPrice": null, "note": "Critical path — Pico can't fly digital without this." },
-        { "partId": "walksnail-avatar-goggles-x",  "status": "want", "qty": 1, "purchasedPrice": null, "note": "Critical path — can't see without goggles." },
-        { "partId": "betafpv-1s-lipo-bt2.0",       "status": "want", "qty": 6, "purchasedPrice": null, "note": "Gap. Confirm A30 vs BT2.0 first." },
-        { "partId": "1s-whoop-charger",            "status": "want", "qty": 1, "purchasedPrice": null, "note": "Hidden gap — wasn't on the checklist." },
-        { "partId": "betafpv-1102-18000kv",        "status": "idea", "qty": 4, "purchasedPrice": null, "note": "Spares / rebuild." }
+        { "partId": "betafpv-pavo-pico",           "status": "have", "qty": 1, "purchasedPrice": null, "note": "Confirm it's the ELRS + Walksnail variant (Walksnail needs the VTX adapter)." },
+        { "partId": "walksnail-avatar-hd-pro-kit", "status": "want", "qty": 1, "purchasedPrice": null, "note": "Critical path — Pico can't fly digital without this. ~$159." },
+        { "partId": "walksnail-avatar-goggles-x",  "status": "want", "qty": 1, "purchasedPrice": null, "note": "Critical path. ~$459-586 — shop around." },
+        { "partId": "goggle-battery-2s",           "status": "want", "qty": 1, "purchasedPrice": null, "note": "Goggles X has NO internal battery — needed to power them." },
+        { "partId": "betafpv-lava-2s-450mah-xt30", "status": "want", "qty": 6, "purchasedPrice": null, "note": "2S/XT30 (corrected from 1S). Buy several." },
+        { "partId": "isdt-q6-nano-charger",        "status": "want", "qty": 1, "purchasedPrice": null, "note": "Must be 2S/XT30-capable." },
+        { "partId": "hex-driver-set",              "status": "want", "qty": 1, "purchasedPrice": null, "note": "Your screwdriver TODO — Pro Kit doesn't include a driver." },
+        { "partId": "betafpv-1102-14000kv",        "status": "idea", "qty": 4, "purchasedPrice": null, "note": "Spares / rebuild — corrected to 14000KV (2S)." }
       ]
     },
     {
@@ -36,9 +38,9 @@
         "cellCount": null
       },
       "items": [
-        { "partId": "betafpv-pavo20",        "status": "idea", "qty": 1, "purchasedPrice": null, "note": "Longer flight time; reuse Moonlight frame." },
-        { "partId": "walksnail-moonlight",   "status": "idea", "qty": 1, "purchasedPrice": null, "note": "Low-light cam upgrade; needs custom Pico mount." },
-        { "partId": "walksnail-avatar-1s-kit", "status": "idea", "qty": 1, "purchasedPrice": null, "note": "Lighter alternative to the Pro Kit — compare weight/camera." }
+        { "partId": "betafpv-pavo20",          "status": "idea", "qty": 1, "purchasedPrice": null, "note": "Longer flight (~5 min). 3S — needs different batteries than the Pico." },
+        { "partId": "walksnail-moonlight",     "status": "idea", "qty": 1, "purchasedPrice": null, "note": "4K low-light cam upgrade; ~43g, likely needs a custom Pico mount." },
+        { "partId": "walksnail-avatar-1s-kit", "status": "idea", "qty": 1, "purchasedPrice": null, "note": "Lighter/cheaper air unit, but lower image quality than the Pro Kit." }
       ]
     }
   ]
