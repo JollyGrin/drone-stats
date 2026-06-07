@@ -59,11 +59,12 @@
       "compat": { "videoSystem": "walksnail", "cellCount": "2S | 3S | 4S | 6S" },
       "retailers": [
         { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-avatar-hd-pro-kit", "price": 159, "currency": "USD", "lastChecked": "2026-06-07" },
-        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-pro-kit", "price": null, "currency": "EUR", "lastChecked": null }
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-pro-kit", "price": 198, "currency": "EUR", "lastChecked": "2026-06-07" },
+        { "name": "SpeedDrones.nl", "url": "https://speeddrones.nl", "price": 179, "currency": "EUR", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": "https://oscarliang.com/walksnail-avatar-hd-pro-v2-kit/", "affiliate": null },
       "tags": ["digital", "walksnail", "critical-path"],
-      "notes": "The air unit that makes the Pico fly digital. ~32g, Sony Starvis II camera. BetaFPV built the Pico's HD bracket around this exact unit. Includes a screw kit but no screwdriver."
+      "notes": "The air unit that makes the Pico fly digital. ~32g, Sony Starvis II camera. BetaFPV built the Pico's HD bracket around this exact unit. Includes a screw kit but no screwdriver. Buy the STANDALONE Pro Kit — not the 'Avatar FPV VRX + Pro Kit' combo, whose VRX receiver is redundant once you have the Goggles X."
     },
     {
       "id": "walksnail-avatar-1s-kit",
@@ -114,7 +115,7 @@
       "compat": { "videoSystem": "walksnail" },
       "retailers": [
         { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-avatar-hd-goggles-x", "price": 459, "currency": "USD", "lastChecked": "2026-06-07" },
-        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-goggles-x", "price": null, "currency": "EUR", "lastChecked": null }
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-goggles-x", "price": 569, "currency": "EUR", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": "https://oscarliang.com/walksnail-avatar-goggles-x/", "affiliate": null },
       "tags": ["digital", "walksnail", "critical-path"],
