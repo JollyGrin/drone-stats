@@ -199,7 +199,21 @@
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["2S", "ac-powered", "critical-path"],
-      "notes": "Recommended charger. Plugs straight into the wall (AC) — no separate PSU, unlike the Q6 Nano. 1-4S LiHV/LiPo, 60W/5A, XT60 out. Charges the goggle battery (XT60) directly; whoop packs are XT30 so need an XT30→XT60 adapter (~€4). Single channel — add an XT30 parallel board later to do several whoop packs at once. Covers up to 4S (Pico 2S, Pavo 20 3S); only 6S would need a bigger charger."
+      "notes": "Recommended charger. Plugs straight into the wall (AC) — no separate PSU, unlike the Q6 Nano. 1-4S LiHV/LiPo, 60W/5A, XT60 out. Charges the goggle battery (XT60) directly; whoop packs are XT30 so need an XT30→XT60 adapter (~€4), all currently OOS at droneshop — the USB balance lader covers whoop packs in the meantime. Single channel — add an XT30 parallel board later to do several whoop packs at once. Covers up to 4S (Pico 2S, Pavo 20 3S); only 6S would need a bigger charger."
+    },
+    {
+      "id": "universal-usb-2s-balance-charger",
+      "name": "Universele USB Lader 2S (3-pin balance)",
+      "brand": "Generic",
+      "category": "charger",
+      "specs": { "cellCount": "2S", "connector": "3-pin JST-XH balance plug", "type": "USB balance charger", "power": "low current, ~30-45 min/pack", "usbPowered": true },
+      "compat": { "cellCount": "2S" },
+      "retailers": [
+        { "name": "Droneshop.nl (in stock)", "url": "https://droneshop.nl/universele-usb-lader-voor-74v-lipo-accu", "price": 4.95, "currency": "EUR", "lastChecked": "2026-06-13" }
+      ],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["2S", "usb", "stopgap"],
+      "notes": "Interim whoop-pack charger that sidesteps the OOS XT30 adapters: charges 2S packs via their 3-pin JST-XH balance plug off any USB port — no XT30 needed. One pack at a time, low current (~30-45 min each), no storage-charge mode. NOT for the 5000mAh goggle pack (too slow / thin balance wires) — use the 405AC for that. Demote to travel backup once an XT30→XT60 adapter restocks."
     },
     {
       "id": "goggle-battery-2s",

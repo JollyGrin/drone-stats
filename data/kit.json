@@ -23,7 +23,8 @@
         { "partId": "walksnail-avatar-goggles-x",  "status": "have", "qty": 1, "purchasedPrice": null, "note": "Bought 2026-06-13. Needs a separate 2S-6S XT60 battery to power on (no internal battery)." },
         { "partId": "goggle-battery-2s",           "status": "want", "qty": 1, "purchasedPrice": null, "note": "Goggles X has NO internal battery — needed to power them." },
         { "partId": "betafpv-lava-2s-450mah-xt30", "status": "want", "qty": 6, "purchasedPrice": null, "note": "EU buy: Tattu 450mAh 2S HV (XT30), €9.95 ea at droneshop.nl — sold as singles, so cart qty 6." },
-        { "partId": "isdt-405ac-charger",          "status": "want", "qty": 1, "purchasedPrice": null, "note": "AC charger, no separate PSU. €54.95 at droneshop.nl. Goggle battery (XT60) plugs in direct; whoop packs need an XT30→XT60 adapter (~€4)." },
+        { "partId": "isdt-405ac-charger",          "status": "want", "qty": 1, "purchasedPrice": null, "note": "AC charger, no separate PSU. €54.95 at droneshop.nl. Goggle battery (XT60) plugs in direct; whoop packs need an XT30→XT60 adapter (~€4, currently OOS at droneshop)." },
+        { "partId": "universal-usb-2s-balance-charger", "status": "want", "qty": 1, "purchasedPrice": null, "note": "Interim whoop charger via the 3-pin balance plug — no XT30 adapter needed. €4.95 at droneshop.nl, in stock. Goggle pack still uses the 405AC." },
         { "partId": "hex-driver-set",              "status": "want", "qty": 1, "purchasedPrice": null, "note": "Pro Kit doesn't include a driver." },
         { "partId": "betafpv-1102-14000kv",        "status": "idea", "qty": 4, "purchasedPrice": null, "note": "Spares / rebuild (1102 14000KV, 2S)." }
       ]
