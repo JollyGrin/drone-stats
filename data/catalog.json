@@ -165,11 +165,12 @@
       "specs": { "cellCount": "2S", "connector": "XT30", "capacityMah": 450, "type": "LiHV 75C", "weight": "~26g" },
       "compat": { "cellCount": "2S", "connector": "XT30" },
       "retailers": [
-        { "name": "BetaFPV (2-pack)", "url": "https://betafpv.com/products/lava-2s-3s-4s-450mah-75c-battery-2pcs", "price": 18, "currency": "USD", "lastChecked": "2026-06-07" }
+        { "name": "Tattu @ Droneshop.nl (EU equiv, in stock)", "url": "https://droneshop.nl/tattu-450mah-2s-95c-7-6v-hv-long-lipo-battery-xt30", "price": 9.95, "currency": "EUR", "lastChecked": "2026-06-13" },
+        { "name": "BetaFPV LAVA (2-pack)", "url": "https://betafpv.com/products/lava-2s-3s-4s-450mah-75c-battery-2pcs", "price": 18, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["2S", "consumable"],
-      "notes": "The stock/recommended Pico pack (2S/XT30 LiHV 75C, ~26g), sized for the tight battery bay. Sold as a 2-pack. LiHV means it needs a LiHV-capable charger. No in-stock EU LAVA found — the Tattu 2S XT30 (droneshop) is a fine EU equivalent. Buy a few packs for a real session."
+      "notes": "The stock/recommended Pico pack (2S/XT30 LiHV ~26g), sized for the tight battery bay. No in-stock EU LAVA — the Tattu 450mAh 2S 95C 7.6V HV (XT30) at droneshop is the EU buy: same HV chemistry, ~28g LONG form, €9.95. Sold as SINGLES (the BetaFPV link is a 2-pack). HV/LiHV needs a LiHV-capable charger. Buy several for a real session."
     },
     {
       "id": "isdt-q6-nano-charger",
@@ -183,8 +184,22 @@
         { "name": "ISDT Shop (fallback)", "url": "https://isdtshop.com/products/isdt-q6-nano", "price": null, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": null, "affiliate": null },
-      "tags": ["2S", "gap"],
-      "notes": "Smart charger for LiPo/LiHV 1-6S. Charges via XT60 — use an XT30→XT60 adapter for the Pico's whoop packs. Often out of stock at droneshop; isdtshop.com is a fallback. Budget alt: an XT30/XT60 parallel charge board (~€20) + any DC charger."
+      "tags": ["2S", "gap", "alt"],
+      "notes": "DC charger — needs a SEPARATE power supply (not included), so the AC 405AC is the simpler pick for this all-2S kit. Charges via XT60 — use an XT30→XT60 adapter for the Pico's whoop packs. Often out of stock at droneshop; isdtshop.com is a fallback. Budget alt: an XT30/XT60 parallel charge board (~€20) + any DC charger."
+    },
+    {
+      "id": "isdt-405ac-charger",
+      "name": "ISDT 405AC Smart AC Charger",
+      "brand": "ISDT",
+      "category": "charger",
+      "specs": { "cellCount": "1S-4S", "connector": "XT60 (needs XT30 adapter for whoop packs)", "type": "smart charger LiPo/LiHV", "power": "60W / 5A", "acPowered": true, "needsPSU": false },
+      "compat": { "cellCount": "2S", "connector": "XT30" },
+      "retailers": [
+        { "name": "Droneshop.nl (in stock)", "url": "https://droneshop.nl/isdt-405ac", "price": 54.95, "currency": "EUR", "lastChecked": "2026-06-13" }
+      ],
+      "links": { "review": null, "affiliate": null },
+      "tags": ["2S", "ac-powered", "critical-path"],
+      "notes": "Recommended charger. Plugs straight into the wall (AC) — no separate PSU, unlike the Q6 Nano. 1-4S LiHV/LiPo, 60W/5A, XT60 out. Charges the goggle battery (XT60) directly; whoop packs are XT30 so need an XT30→XT60 adapter (~€4). Single channel — add an XT30 parallel board later to do several whoop packs at once. Covers up to 4S (Pico 2S, Pavo 20 3S); only 6S would need a bigger charger."
     },
     {
       "id": "goggle-battery-2s",
