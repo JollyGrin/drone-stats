@@ -232,17 +232,17 @@
     {
       "id": "hex-driver-set",
       "name": "FPV Tool Set (hex + Phillips)",
-      "brand": "SpeedDrones / GEPRC",
+      "brand": "NewBeeDrone / generic",
       "category": "tool",
       "specs": { "bits": "1.5/2.0/2.5mm hex + Phillips", "includes": "prop tool, pliers (varies by kit)" },
       "compat": {},
       "retailers": [
-        { "name": "SpeedDrones.nl", "url": "https://www.speeddrones.nl/fpv-toolkit.html", "price": 30, "currency": "EUR", "lastChecked": "2026-06-07" },
-        { "name": "Droneshop.nl (GEPRC pack)", "url": "https://droneshop.nl/geprc-fpv-hardware-pack", "price": null, "currency": "EUR", "lastChecked": "2026-06-07" }
+        { "name": "Droneshop.nl — NewBeeDrone Tool Kit V1.7 (in stock)", "url": "https://droneshop.nl/newbeedrone-tool-kit-v1-7", "price": 64.95, "currency": "EUR", "lastChecked": "2026-06-13" },
+        { "name": "Droneshop.nl — GEPRC FPV Hardware Pack (screws + tools)", "url": "https://droneshop.nl/geprc-fpv-hardware-pack", "price": null, "currency": "EUR", "lastChecked": "2026-06-13" }
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["tools", "gap"],
-      "notes": "The Avatar Pro Kit includes only a screw kit, not a driver — you still need an FPV hex/Phillips set for assembly and prop changes. EU tool kits go in and out of stock; any 1.5/2.0/2.5mm hex driver set works."
+      "notes": "The Avatar Pro Kit includes screws but no driver — you need an FPV hex/Phillips set (1.5/2.0/2.5mm hex) for assembly and prop changes. In stock at droneshop: NewBeeDrone Tool Kit V1.7 (€64.95, complete FPV set with case). The cheaper dedicated FPV sets there (7-piece €15, 51-in-1, Mannesmann) are all discontinued/OOS as of 2026-06-13 — any 1.5/2.0/2.5mm hex set works, so a budget hardware-store set is fine if you'd rather not spend €65."
     }
   ]
 }
