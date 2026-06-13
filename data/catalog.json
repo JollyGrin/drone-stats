@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "_comment": "CATALOG = the shareable parts database. Specs + compatibility, independent of whether you own a part. kit.json references these by `id`. Prices are approximate (USD) as of lastChecked. `verify: true` in specs marks a fact still unconfirmed.",
+  "_comment": "CATALOG = the shareable parts database. Specs + compatibility, independent of whether you own a part. kit.json references these by `id`. Retailers list EU (droneshop.nl) first where the pilot will buy. Prices approximate as of lastChecked. `verify: true` in specs marks a fact still unconfirmed.",
   "categories": [
     { "id": "radio",   "label": "Radio / Transmitter", "icon": "📻" },
     { "id": "drone",   "label": "Drone / Frame",        "icon": "🚁" },
@@ -17,14 +17,14 @@
       "name": "RadioMaster Pocket",
       "brand": "RadioMaster",
       "category": "radio",
-      "specs": { "protocol": "elrs", "gimbals": "hall", "screen": "monochrome" },
+      "specs": { "protocol": "elrs", "gimbals": "hall", "firmware": "EdgeTX", "power": "2x 18650 (not included)", "moduleBay": "Nano/TBS" },
       "compat": { "radioProtocol": "elrs" },
       "retailers": [
-        { "name": "Droneshop.nl", "url": "https://droneshop.nl/radiomaster-pocket-elrs", "price": null, "currency": "EUR", "lastChecked": null }
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/radiomaster-pocket-elrs", "price": 78, "currency": "EUR", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": "https://www.youtube.com/watch?v=GgaWMvAHZi8", "affiliate": null },
       "tags": ["beginner", "elrs"],
-      "notes": "Compact ELRS radio. Binds to the Pavo Pico's built-in serial ELRS receiver (buy the ELRS Pico variant)."
+      "notes": "Compact ELRS radio. Binds to the Pavo Pico's built-in serial ELRS receiver. Runs EdgeTX; takes 2x 18650 cells (buy separately)."
     },
     {
       "id": "betafpv-pavo-pico",
@@ -39,11 +39,12 @@
       },
       "compat": { "radioProtocol": "elrs", "videoSystem": "walksnail | dji-o3 | vista", "cellCount": "2S", "connector": "XT30" },
       "retailers": [
-        { "name": "BetaFPV", "url": "https://betafpv.com/products/pavo-pico-brushless-whoop?variant=40164423696518", "price": null, "currency": "USD", "lastChecked": "2026-06-07" }
+        { "name": "Pyrodrone (in stock)", "url": "https://pyrodrone.com/products/betafpv-pavo-pico-brushless-whoop-quadcopter-dji-o3-ready-choose-receiver", "price": 135, "currency": "USD", "lastChecked": "2026-06-07" },
+        { "name": "BetaFPV (PNP, sold out)", "url": "https://betafpv.com/products/pavo-pico-brushless-whoop-quadcopter", "price": 70, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": "https://oscarliang.com/betafpv-pavo-pico-whoop-dji-o3/", "affiliate": null },
       "tags": ["whoop", "cinewhoop", "owned"],
-      "notes": "A 2S/XT30 HD cinewhoop, built to carry the Avatar HD Pro. The Walksnail variant needs an extra VTX adapter; the ELRS variant binds to the RadioMaster Pocket. A newer Pavo Pico II (DJI O4, ~6:30 flight) also exists if you haven't bought yet."
+      "notes": "A 2S/XT30 HD cinewhoop, built to carry the Avatar HD Pro. The Walksnail variant needs an extra VTX adapter; the ELRS variant binds to the RadioMaster Pocket. Gen-1 is sold out at BetaFPV (Pyrodrone has stock). The newer Pavo Pico II is DJI O4-only — it dropped Walksnail support."
     },
     {
       "id": "walksnail-avatar-hd-pro-kit",
@@ -54,13 +55,13 @@
         "videoSystem": "walksnail", "camera": "Avatar HD Pro (1/1.8\" Sony Starvis II)",
         "vtx": "Avatar V2 module", "resolution": "1080p60 / 720p120",
         "inputVoltage": "2S-6S", "weightTotal": "~32g", "storage": "32GB",
-        "includes": "screw kit (NOT a screwdriver)"
+        "includes": "screw kit (no screwdriver)"
       },
       "compat": { "videoSystem": "walksnail", "cellCount": "2S | 3S | 4S | 6S" },
       "retailers": [
-        { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-avatar-hd-pro-kit", "price": 159, "currency": "USD", "lastChecked": "2026-06-07" },
         { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-pro-kit", "price": 198, "currency": "EUR", "lastChecked": "2026-06-07" },
-        { "name": "SpeedDrones.nl", "url": "https://speeddrones.nl", "price": 179, "currency": "EUR", "lastChecked": "2026-06-07" }
+        { "name": "SpeedDrones.nl (sale)", "url": "https://speeddrones.nl", "price": 179, "currency": "EUR", "lastChecked": "2026-06-07" },
+        { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-avatar-hd-pro-kit", "price": 159, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": "https://oscarliang.com/walksnail-avatar-hd-pro-v2-kit/", "affiliate": null },
       "tags": ["digital", "walksnail", "critical-path"],
@@ -72,12 +73,13 @@
       "brand": "Walksnail / Caddx",
       "category": "airunit",
       "specs": {
-        "videoSystem": "walksnail", "camera": "Avatar Lite (1/2.7\" sensor)",
-        "vtx": "Avatar Mini 1S module", "inputVoltage": "1S-3S",
-        "weightTotal": "7.8g", "storage": "8GB"
+        "videoSystem": "walksnail", "camera": "Avatar Lite (1/2.7\" sensor, 170° FOV)",
+        "vtx": "Avatar Mini 1S module (30x30x6.5mm)", "inputVoltage": "3.1-13V",
+        "power": "350-500mW (sources differ)", "weightTotal": "7.8g", "storage": "8GB"
       },
       "compat": { "videoSystem": "walksnail", "cellCount": "1S | 2S | 3S" },
       "retailers": [
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-mini-1s-lite-kit", "price": 119, "currency": "EUR", "lastChecked": "2026-06-07" },
         { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-avatar-hd-mini-1s-lite-kit", "price": 89, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": null, "affiliate": null },
@@ -86,21 +88,23 @@
     },
     {
       "id": "walksnail-moonlight",
-      "name": "Walksnail Moonlight",
+      "name": "Walksnail Moonlight Kit",
       "brand": "Walksnail / Caddx",
       "category": "airunit",
       "specs": {
         "videoSystem": "walksnail", "type": "camera + VTX combo air unit",
-        "recording": "4K60 + EIS", "lowLight": "Starlight sensor, ISO 25600",
-        "weight": "~43g", "verify": true
+        "recording": "4K60 (up to 150Mbps) + EIS", "sensor": "1/1.8\" starlight, F2.1, ISO 25600",
+        "fov": "160°", "inputVoltage": "7.4-25.2V", "weight": "~43g", "storage": "microSD up to 256GB",
+        "verify": true
       },
       "compat": { "videoSystem": "walksnail" },
       "retailers": [
-        { "name": "GetFPV", "url": "https://www.getfpv.com/walksnail-moonlight-kit-4k-avatar-fpv-system.html", "price": null, "currency": "USD", "lastChecked": "2026-06-07" }
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-4k-moonlight-kit-camera-recording-board-vtx", "price": 219, "currency": "EUR", "lastChecked": "2026-06-07" },
+        { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-moonlight-kit", "price": 178, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": "https://oscarliang.com/walksnail-moonlight/", "affiliate": null },
       "tags": ["digital", "walksnail", "low-light", "future"],
-      "notes": "An O3-class 4K low-light air unit (~43g) — heavier than the O3. No confirmation it mounts cleanly on the Pico; almost certainly needs a custom/3D-printed mount. Better suited to larger cinewhoops. Price not reliably found — verify."
+      "notes": "A 4K starlight air unit (~43g) — outshines the DJI O3 in low light (ISO 25600). Works with the Goggles X. The VTX (34.5mm) is wider than an O3, so it likely needs a custom/3D-printed mount on the Pico. Camera-only and VTX-only SKUs also exist."
     },
     {
       "id": "walksnail-avatar-goggles-x",
@@ -108,18 +112,20 @@
       "brand": "Walksnail / Caddx",
       "category": "goggles",
       "specs": {
-        "videoSystem": "walksnail", "panel": "dual OLED 1920x1080 @ 100Hz",
-        "fov": "50°", "weight": "290g", "battery": "NONE — needs external 2S-6S pack",
-        "inputs": "Walksnail HD native, analog (AV-in), HDZero (HDMI-in)"
+        "videoSystem": "walksnail", "panel": "OLED 1920x1080 @ 100Hz",
+        "fov": "50°", "weight": "290g", "battery": "NONE — needs external 2S-6S pack (XT60)",
+        "receiver": "built-in 8ch 5.8GHz, replaceable module",
+        "antennas": "4x RP-SMA stubby", "inputs": "HDMI in/out, 3.5mm A/V (analog) in",
+        "extras": "head-tracking, diopter adjust, DVR to microSD"
       },
       "compat": { "videoSystem": "walksnail" },
       "retailers": [
-        { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-avatar-hd-goggles-x", "price": 459, "currency": "USD", "lastChecked": "2026-06-07" },
-        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-goggles-x", "price": 569, "currency": "EUR", "lastChecked": "2026-06-07" }
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/walksnail-avatar-hd-goggles-x", "price": 569, "currency": "EUR", "lastChecked": "2026-06-07" },
+        { "name": "Caddx", "url": "https://www.caddxfpv.com/products/walksnail-avatar-hd-goggles-x", "price": 459, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": "https://oscarliang.com/walksnail-avatar-goggles-x/", "affiliate": null },
       "tags": ["digital", "walksnail", "critical-path"],
-      "notes": "Your goggles. OLED 1080p100, 50° FOV, can also ingest analog + HDZero. IMPORTANT: no internal battery — you must buy a separate 2S-6S pack to power them. Price varies a lot by retailer (~$459-586); shop around."
+      "notes": "Your goggles. OLED 1080p100, 50° FOV, can also ingest analog (A/V in) and HDZero (HDMI in). IMPORTANT: no internal battery — you must buy a separate 2S-6S pack (XT60) to power them. ~€569 at droneshop; the caddxfpv USD listing reads anomalously high — trust the EU price."
     },
     {
       "id": "betafpv-pavo20",
@@ -129,77 +135,85 @@
       "specs": { "class": "cinewhoop", "cellCount": "3S", "batteryConnector": "XT30", "prop": "2-inch GF2015", "wheelbase": "90mm", "motor": "1103 8500KV", "flightTime": "~5 min" },
       "compat": { "radioProtocol": "elrs", "videoSystem": "dji-o3 | walksnail | vista", "cellCount": "3S", "connector": "XT30" },
       "retailers": [
-        { "name": "BetaFPV", "url": "https://betafpv.com/products/pavo20-brushless-whoop-quadcopter", "price": null, "currency": "USD", "lastChecked": "2026-06-07" }
+        { "name": "Pyrodrone (in stock)", "url": "https://pyrodrone.com/products/betafpv-pavo20-brushless-2-whoop-quadcopter-dji-o3-ready-choose-receiver", "price": null, "currency": "USD", "lastChecked": "2026-06-07" },
+        { "name": "BetaFPV", "url": "https://betafpv.com/products/pavo20-brushless-whoop-quadcopter", "price": 84, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
-      "links": { "review": null, "affiliate": null },
+      "links": { "review": "https://oscarliang.com/betafpv-pavo20-cinewhoop/", "affiliate": null },
       "tags": ["cinewhoop", "future", "longer-flight"],
       "notes": "The real step up for flight time: 3S, 2-inch props, 90mm, ~5 min vs the Pico's ~3-4 min. NOTE: 3S only — needs different batteries than the Pico's 2S (still XT30). Goggles + radio carry over."
     },
     {
       "id": "betafpv-1102-14000kv",
-      "name": "BetaFPV 1102 14000KV Motors",
+      "name": "BetaFPV LAVA 1102 14000KV Motors",
       "brand": "BetaFPV",
       "category": "motor",
       "specs": { "kv": 14000, "size": "1102", "cellCount": "2S", "weightEach": "~2.8g" },
       "compat": { "cellCount": "2S", "frameClass": "whoop" },
       "retailers": [
-        { "name": "BetaFPV", "url": "https://betafpv.com/products/1102-13500kv-brushless-motors", "price": null, "currency": "USD", "lastChecked": "2026-06-07" }
+        { "name": "BlackMarketFPV (4-pack)", "url": "https://blackmarketfpv.com/product/betafpv-1102-14000kv-motors-w-connector-2022-version-4-pack/", "price": 40, "currency": "USD", "lastChecked": "2026-06-07" },
+        { "name": "BetaFPV (single)", "url": "https://betafpv.com/products/lava-series-1102-brushless-motors", "price": 11, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["whoop", "2S", "spare"],
-      "notes": "The Pico's stock motor — 1102 14000KV (2S). (The 1102 18000KV is a different, 1S motor for the Meteor75/Cetus class.) Useful as Pico spares."
+      "notes": "The Pico's stock motor — 1102 14000KV (2S), the only KV BetaFPV offers in this LAVA 1102 line. (The 1102 18000KV is a different, 1S Meteor75/Cetus motor.) Useful as Pico spares."
     },
     {
       "id": "betafpv-lava-2s-450mah-xt30",
       "name": "BetaFPV LAVA 2S 450mAh (XT30)",
       "brand": "BetaFPV",
       "category": "battery",
-      "specs": { "cellCount": "2S", "connector": "XT30", "capacityMah": 450, "type": "LiPo 45C", "chemAlt": "LiHV 75C available" },
+      "specs": { "cellCount": "2S", "connector": "XT30", "capacityMah": 450, "type": "LiHV 75C", "weight": "~26g" },
       "compat": { "cellCount": "2S", "connector": "XT30" },
       "retailers": [
-        { "name": "BetaFPV", "url": "https://betafpv.com/products/450mah-2s-45c-lipo-battery-2pcs", "price": 15, "currency": "USD", "lastChecked": "2026-06-07" }
+        { "name": "BetaFPV (2-pack)", "url": "https://betafpv.com/products/lava-2s-3s-4s-450mah-75c-battery-2pcs", "price": 18, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["2S", "consumable"],
-      "notes": "The stock/recommended Pico pack (2S/XT30), sized for the tight battery bay. A LiHV 75C variant gives a bit more punch. Buy several (~4-8) for a real session. ~$15/2-pack."
+      "notes": "The stock/recommended Pico pack (2S/XT30 LiHV 75C, ~26g), sized for the tight battery bay. Sold as a 2-pack. LiHV means it needs a LiHV-capable charger. No in-stock EU LAVA found — the Tattu 2S XT30 (droneshop) is a fine EU equivalent. Buy a few packs for a real session."
     },
     {
       "id": "isdt-q6-nano-charger",
-      "name": "Smart Charger (2S, XT30) — ISDT Q6 Nano + lead",
-      "brand": "ISDT / generic",
+      "name": "ISDT Q6 Nano Charger (1-6S)",
+      "brand": "ISDT",
       "category": "charger",
-      "specs": { "cellCount": "2S-6S", "connector": "XT30 (via lead)", "type": "smart charger", "needsPSU": true },
+      "specs": { "cellCount": "1S-6S", "connector": "XT60 (needs XT30 adapter for whoop packs)", "type": "smart charger LiPo/LiHV", "needsPSU": true },
       "compat": { "cellCount": "2S", "connector": "XT30" },
       "retailers": [
-        { "name": "Oscar Liang guide", "url": "https://oscarliang.com/choose-lipo-battery-charger-power-supply/", "price": 35, "currency": "USD", "lastChecked": "2026-06-07" }
+        { "name": "Droneshop.nl", "url": "https://droneshop.nl/isdt-q6-nano-pocket-charger", "price": 37, "currency": "EUR", "lastChecked": "2026-06-07" },
+        { "name": "ISDT Shop (fallback)", "url": "https://isdtshop.com/products/isdt-q6-nano", "price": null, "currency": "USD", "lastChecked": "2026-06-07" }
       ],
       "links": { "review": null, "affiliate": null },
       "tags": ["2S", "gap"],
-      "notes": "Use a 2S-capable smart charger (ISDT Q6 Nano) with an XT30 charge lead, or add an XT30 parallel board (e.g. HGLRC Thor) to charge several packs at once. Note: BetaFPV's own 2S charger lacks an XT30 port."
+      "notes": "Smart charger for LiPo/LiHV 1-6S. Charges via XT60 — use an XT30→XT60 adapter for the Pico's whoop packs. Often out of stock at droneshop; isdtshop.com is a fallback. Budget alt: an XT30/XT60 parallel charge board (~€20) + any DC charger."
     },
     {
       "id": "goggle-battery-2s",
-      "name": "Goggle Battery (2S, for Goggles X)",
-      "brand": "generic 18650 / LiPo",
+      "name": "DOGCOM 2S 5000mAh Goggle Battery (XT60)",
+      "brand": "DOGCOM",
       "category": "battery",
-      "specs": { "cellCount": "2S-6S", "connector": "XT60", "for": "Goggles X (no internal battery)", "verify": true },
+      "specs": { "cellCount": "2S", "connector": "XT60 + DC5.0", "capacityMah": 5000, "for": "Goggles X (no internal battery)" },
       "compat": { "videoSystem": "walksnail" },
-      "retailers": [],
+      "retailers": [
+        { "name": "Droneshop.nl (in stock)", "url": "https://droneshop.nl/dogcom-5000mah-2s-xt60-dc5-0", "price": 25, "currency": "EUR", "lastChecked": "2026-06-07" }
+      ],
       "links": { "review": null, "affiliate": null },
-      "tags": ["goggles", "critical-path", "gap"],
-      "notes": "The Goggles X has no built-in battery — you need an external 2S-6S pack (commonly a 2S 18650 strap-on pack, XT60). Without it the goggles won't power on. Confirm preferred form factor."
+      "tags": ["goggles", "critical-path"],
+      "notes": "Powers the Goggles X, which has no built-in battery. 2S 5000mAh with XT60 — made for FPV goggles, straps to the headband. In stock at droneshop. A single charge lasts a full session."
     },
     {
       "id": "hex-driver-set",
-      "name": "Hex / Phillips Driver Set (FPV)",
-      "brand": "generic / iFlight / BetaFPV",
+      "name": "FPV Tool Set (hex + Phillips)",
+      "brand": "SpeedDrones / GEPRC",
       "category": "tool",
-      "specs": { "bits": "1.5/2.0/2.5mm hex + Phillips", "verify": true },
+      "specs": { "bits": "1.5/2.0/2.5mm hex + Phillips", "includes": "prop tool, pliers (varies by kit)" },
       "compat": {},
-      "retailers": [],
+      "retailers": [
+        { "name": "SpeedDrones.nl", "url": "https://www.speeddrones.nl/fpv-toolkit.html", "price": 30, "currency": "EUR", "lastChecked": "2026-06-07" },
+        { "name": "Droneshop.nl (GEPRC pack)", "url": "https://droneshop.nl/geprc-fpv-hardware-pack", "price": null, "currency": "EUR", "lastChecked": "2026-06-07" }
+      ],
       "links": { "review": null, "affiliate": null },
       "tags": ["tools", "gap"],
-      "notes": "The Avatar Pro Kit includes only a screw kit, not a driver — you still need an FPV hex/Phillips driver set for assembly and prop changes."
+      "notes": "The Avatar Pro Kit includes only a screw kit, not a driver — you still need an FPV hex/Phillips set for assembly and prop changes. EU tool kits go in and out of stock; any 1.5/2.0/2.5mm hex driver set works."
     }
   ]
 }

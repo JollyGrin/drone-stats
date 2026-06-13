@@ -4,7 +4,7 @@
   "owner": {
     "name": "",
     "shareUrl": "",
-    "updated": "2026-06-07"
+    "updated": "2026-06-13"
   },
   "builds": [
     {
@@ -20,7 +20,7 @@
         { "partId": "radiomaster-pocket-elrs",     "status": "have", "qty": 1, "purchasedPrice": null, "note": "" },
         { "partId": "betafpv-pavo-pico",           "status": "have", "qty": 1, "purchasedPrice": null, "note": "Confirm it's the ELRS + Walksnail variant (Walksnail needs the VTX adapter)." },
         { "partId": "walksnail-avatar-hd-pro-kit", "status": "want", "qty": 1, "purchasedPrice": null, "note": "Critical path — Pico can't fly digital without this. ~$159." },
-        { "partId": "walksnail-avatar-goggles-x",  "status": "want", "qty": 1, "purchasedPrice": null, "note": "Critical path. ~$459-586 — shop around." },
+        { "partId": "walksnail-avatar-goggles-x",  "status": "have", "qty": 1, "purchasedPrice": null, "note": "Bought 2026-06-13. Needs a separate 2S-6S XT60 battery to power on (no internal battery)." },
         { "partId": "goggle-battery-2s",           "status": "want", "qty": 1, "purchasedPrice": null, "note": "Goggles X has NO internal battery — needed to power them." },
         { "partId": "betafpv-lava-2s-450mah-xt30", "status": "want", "qty": 6, "purchasedPrice": null, "note": "2S/XT30 — buy several." },
         { "partId": "isdt-q6-nano-charger",        "status": "want", "qty": 1, "purchasedPrice": null, "note": "Must be 2S/XT30-capable." },
